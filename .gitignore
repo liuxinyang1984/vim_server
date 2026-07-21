@@ -1,0 +1,10 @@
+plugged/
+autoload/
+*.swp
+*.swo
+*~
+.netrwhist
+tags
+TAGS
+.viminfo
+.vimtags
