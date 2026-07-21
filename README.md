@@ -168,6 +168,25 @@ nvim -u /opt/vim-config/vimrc -c 'echo g:vim_config_dir' -c 'qa'
 
 手测：gruvbox、airline、`tt` → `l` 开文件、`ff`/`fr`、Insert 输入 `(` 自动补 `)`、`<C-s>`、`:q`。
 
+### SSH 终端：关闭 IXON（避免 `<C-s>` 冻屏）
+
+SSH 登录后，终端默认开启 **IXON** 流控：按 `<C-s>` 会发送 XOFF，**暂停终端输出**，看起来像屏幕“卡住/锁死”（并非 Vim 锁屏）。本配置里 `<C-s>` 映射为保存（`:w`），容易误触。
+
+**当前会话立即恢复：** 按 `<C-q>`（XON）。注意：Vim 内 `<C-q>` 映射为退出（`:q`）；若已在 Vim 里冻屏，可先 `<C-z>` 挂起，在 shell 里按 `<C-q>` 解冻，再 `fg` 回到 Vim。
+
+**推荐：登录后关闭 IXON**（写入 shell 配置，长期生效）：
+
+```bash
+# 当前会话
+stty -ixon
+
+# 以后每次登录自动生效（按实际 shell 二选一）
+echo 'stty -ixon' >> ~/.bashrc   # bash
+echo 'stty -ixon' >> ~/.zshrc    # zsh
+```
+
+验证：`stty -a | grep ixon` 应显示 `-ixon`（或无 `ixon`）。
+
 ---
 
 ## 目录结构
