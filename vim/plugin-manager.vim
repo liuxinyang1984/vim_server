@@ -4,9 +4,7 @@ let s:dir = g:vim_config_dir
 let s:plug_file = s:dir . '/autoload/plug.vim'
 
 if empty(glob(s:plug_file))
-  silent execute '!curl -fsSL'
-        \ . ' https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-        \ . ' --create-dirs -o ' . shellescape(s:plug_file)
+  silent execute '!curl -fsSL https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --create-dirs -o ' . shellescape(s:plug_file)
   autocmd VimEnter * !sleep 1
 endif
 execute 'source ' . fnameescape(s:plug_file)

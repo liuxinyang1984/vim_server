@@ -1,13 +1,15 @@
 " Keymaps (plugin maps OK; add new Plug only in plugin-manager.vim).
+" Search highlight: cleared on hjkl/arrows (not <Esc>) — avoids SSH terminal escape sequences.
+" :nohlsearch must run as Ex command in the mapping; it does not work inside :call functions.
 
-nnoremap <Esc> :nohlsearch<CR>
+for s:key in ['<Up>', '<Down>', '<Left>', '<Right>', 'h', 'j', 'k', 'l']
+  execute 'nnoremap <silent> ' . s:key . ' :<C-U>nohlsearch<CR>' . s:key
+endfor
 
 imap <C-h> <Left>
 imap <C-j> <Down>
 imap <C-k> <Up>
 imap <C-l> <Right>
-imap <C-d> <Esc>ddi
-imap <C-D> <Esc>Di
 imap <C-u> <Esc>u
 imap <C-r> <Esc><C-r>
 imap <C-BS> <C-o>d0
@@ -23,8 +25,8 @@ nnoremap tl :tabn<CR>
 nnoremap tk :-tabmove<CR>
 nnoremap tj :+tabmove<CR>
 
-nnoremap J 5j
-nnoremap K 5k
+nnoremap J :<C-U>nohlsearch<CR>5j
+nnoremap K :<C-U>nohlsearch<CR>5k
 vnoremap J 5j
 vnoremap K 5k
 

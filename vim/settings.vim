@@ -12,6 +12,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set wildmenu
+set hlsearch
+set incsearch
+set shortmess+=s
 set colorcolumn=80
 set hidden
 set laststatus=2

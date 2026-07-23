@@ -277,7 +277,7 @@ echo 'stty -ixon' >> ~/.zshrc    # zsh
 | 键 | 功能 |
 |----|------|
 | `J` / `K` | 上下 5 行（Normal / Visual） |
-| `<Esc>` | 取消搜索高亮 |
+| `h` / `j` / `k` / `l` / 方向键 / `J` / `K` | 取消搜索高亮 |
 | `<Space>tm` / `tr` / `ti` | table-mode 开关 / 对齐 / 表格化 |
 | Insert `<C-h/j/k/l>` | 方向键 |
 
